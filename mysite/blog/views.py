@@ -1,4 +1,8 @@
 from django.http import HttpResponse
+from blog.models import Post
 
 def post_list(request):
-  return HttpResponse("Hello World")
+  body = ""
+  for post in Post.objects.all():
+    body += post.title + "<br>"
+  return HttpResponse(body)
