@@ -1,15 +1,8 @@
-<html lang="ja">
-<head>
-  <title>マイブログ</title>
-</head>
-<body>
-<div>
-  <h1>
-    <a href="{% url 'post_list' %}">
-      マイブログ
-    </a>
-  </h1>
-</div>
+{% extends 'base.html' %}
+
+{% block title %}マイブログ{% endblock %}
+
+{% block content %}
 {% for post in posts %}
 <div>
   <h2>
@@ -21,5 +14,4 @@
   <p>{{ post.body }}</p>
 </div>
 {% endfor %}
-</body>
-</html>
+{% endblock %}}
