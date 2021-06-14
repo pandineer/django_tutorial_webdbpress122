@@ -1,3 +1,15 @@
-<h1>{{ post.title }}</h1>
+{% extends 'base.html' %}
 
-{{ post.body }}
+{% block title %}{{ post.title }} - マイブログ{% endblock %}
+
+{% block content %}
+<div>
+  <h2>{{ post.title }}</h2>
+  <p>{{ post.created_at }}</p>
+  <p>{{ post.body|linebreaksbr }}</p>
+</div>
+
+<div>
+  <a href="{% url 'post_list' %}">一覧に戻る</a>
+</div>
+{% endblock %}

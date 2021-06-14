@@ -1,6 +1,17 @@
-<h1>マイブログ</h1>
-<ul>
+{% extends 'base.html' %}
+
+{% block title %}マイブログ{% endblock %}
+
+{% block content %}
 {% for post in posts %}
-  <li>{{ post.title }}</li>
+<div>
+  <h2>
+    <a href="{% url 'post_detail' post.id %}">
+      {{ post.title }}
+    </a>
+  </h2>
+  <p>{{ post.created_at }}</p>
+  <p>{{ post.body }}</p>
+</div>
 {% endfor %}
-</ul>
+{% endblock %}}
