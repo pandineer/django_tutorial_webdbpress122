@@ -7,3 +7,6 @@ def post_list(request):
     "post_list.html",
     {"posts": Post.objects.all()}
   )
+
+def post_detail(request, post_id):
+  pass
