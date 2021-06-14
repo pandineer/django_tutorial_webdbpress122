@@ -1,6 +1,6 @@
 <h1>マイブログ</h1>
 <ul>
 {% for post in posts %}
-  <li><a href="/posts/{{ post.id }}/">{{ post.title }}</a></li>
+  <li><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></li>
 {% endfor %}
 </ul>
