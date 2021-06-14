@@ -9,4 +9,9 @@ def post_list(request):
   )
 
 def post_detail(request, post_id):
-  pass
+  post = Post.objects.get(id=post_id)
+  return TemplateResponse(
+    request,
+    "post_detail.html",
+    {"post": post},
+  )
