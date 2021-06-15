@@ -1,18 +1,13 @@
-from django.shortcuts import get_object_or_404
-from django.template.response import TemplateResponse
+from django.views.generic import DetailView, ListView
 from blog.models import Post
 
-def post_list(request):
-  return TemplateResponse(
-    request,
-    "post_list.html",
-    {"posts": Post.objects.all()}
-  )
+class PostListView(ListView):
+  model = Post
+  template_name = "post_list.html"
+  context_object_name = "posts"
 
-def post_detail(request, post_id):
-  post = get_object_or_404(Post, id=post_id)
-  return TemplateResponse(
-    request,
-    "post_detail.html",
-    {"post": post},
-  )
+class PostDetailView(DetailView):
+  model = Post
+  pk_url_kwarg = "post_id"
+  template_name = "post_detail.html"
+  context_object_name = "post"
