@@ -4,14 +4,23 @@
 
 {% block content %}
 {% for post in posts %}
-<div>
-  <h2>
+<div class="card mb-3 p-2">
+  <div class="card-body">
+    <h2 class="card-title">
+      <a class="text-dark text-decoration-none" href="{% url 'post_detail' post.id %}">
+        {{ post.title }}
+      </a>
+    </h2>
+    <h6 class="card-subtitle mb-3 text-muted">
+      {{ post.created_at }}
+    </h6>
+    <p class="card-text">
+      {{ post.body|truncatechars:180 }}
+    </p>
     <a href="{% url 'post_detail' post.id %}">
-      {{ post.title }}
+      記事を読む
     </a>
-  </h2>
-  <p>{{ post.created_at }}</p>
-  <p>{{ post.body }}</p>
+  </div>
 </div>
 {% endfor %}
 {% endblock %}}
